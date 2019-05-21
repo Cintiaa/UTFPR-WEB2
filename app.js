@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 require('./passport')(passport);
 
 //Configurando conexão com banco de dados
-mongoose.connect('mongodb://127.0.0.1:27017/db-agenda', { useNewUrlParser: true })
+mongoose.connect('mongodb://agenda:agenda123@ds151086.mlab.com:51086/db-agenda', { useNewUrlParser: true })
   .then(() => {
     console.log('Conexão com banco de dados realizada com sucesso');
   })
