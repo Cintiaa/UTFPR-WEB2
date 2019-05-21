@@ -30,23 +30,25 @@
         <a class="btn secondary white btn-lg" href="/eventos">Cadastrar Eventos</a>
         <a class="btn secondary white btn-lg" href="/logout">Logout</a>
     </nav>
-    <%
-                if(results){
-                    if(list.length > 0){
-            %>
-    <b>Resultados da pesquisa por <%= search %>:</b>
-    <ul>
-        <% list.forEach(function(item){ %>
-        <li><%= item.nome %> <%= item.descricao %> (<%= item.data%>)</li>
-        <% }); %>
-    </ul>
-    <% } else{ %>
-    <b>Nenhum resultado encontrado para <%= search %>!</b>
-    <% 
-                }
+    <center>
+        <%
+            if(results){
+                if(list.length > 0){
+        %>
+        <b>Resultados da pesquisa por <%= search %>:</b>
+        <ul>
+            <% list.forEach(function(item){ %>
+            <li><%= item.nome %> <%= item.descricao %> (<%= item.data%>)</li>
+            <% }); %>
+        </ul>
+        <% } else{ %>
+        <b>Nenhum resultado encontrado para <%= search %>!</b>
+        <% 
             }
-            %>
+        }
+        %>
 
+    </center>
 
 </body>
 
