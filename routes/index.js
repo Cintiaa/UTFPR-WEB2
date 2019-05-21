@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const evento = require('../models/eventos');
 
 //Verifica se o usuário tem acesso a rota
 const loggedin = function (req, res, next) {
@@ -37,7 +38,22 @@ router.get('/cadastro', function (req, res, next) {
 
 /* Requisição GET para a página Home. */
 router.get('/home', loggedin, function (req, res, next) {
-  res.render('home');
+  res.render('home', { results: false });
+});
+
+
+router.get('/eventos', loggedin, function (req, res, next) {
+  res.render('eventos');
+});
+
+/* Requisição GET para busca. */
+router.get('/search', function (req, res, next) {
+  evento.find({ nome: req.query.query }, function (err, eventos) {
+    if (err)
+      return console.error(err);
+    console.dir(eventos);
+    res.render('home', { results:true, search: req.query.query, list: eventos})
+  })
 });
 
 /* Requisição POST de logout. */

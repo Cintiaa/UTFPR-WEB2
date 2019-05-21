@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 require('./passport')(passport);
 
 //Configurando conexão com banco de dados
-mongoose.connect('mongodb://agenda:agenda123@ds151086.mlab.com:51086/db-agenda', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1:27017/db-agenda', { useNewUrlParser: true })
   .then(() => {
     console.log('Conexão com banco de dados realizada com sucesso');
   })
@@ -25,6 +25,7 @@ const indexRouter = require('./routes/index');
 const usuarioRouter = require('./routes/usuario');
 const authRouter = require('./routes/auth')(passport);
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -33,7 +34,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 require('./passport')(passport);
 app.use(session({
