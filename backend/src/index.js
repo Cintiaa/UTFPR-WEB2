@@ -13,7 +13,7 @@ const app = express();
 
 
 //Configurando conexão com o banco de dados
-mongoose.connect('mongodb://agenda:agenda123@ds151086.mlab.com:51086/db-agenda', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1:27017/db-agenda2', { useNewUrlParser: true })
     .then(() => {
         console.log('Conexão com o banco de dados realizada com sucesso!!');
     }).catch((error) => {

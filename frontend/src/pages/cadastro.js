@@ -11,6 +11,7 @@ export default class Cadastro extends Component {
     this.state = {
       email: '',
       password: '',
+      error: ''
     }
   }
 
@@ -20,10 +21,17 @@ export default class Cadastro extends Component {
 
     const { email, password } = this.state;
 
-    if (!email.length || !password.length) return;
-
-    await api.post('auth/cadastro', { email, password });
-    this.props.history.push('/');
+    if (!email.length || !password.length) {
+      this.setState({ error: "Preencha todos os campos do formulário!" });
+    } else {
+      try {
+        await api.post('auth/cadastro', { email, password });
+        this.props.history.push('/');
+      } catch (err) {
+        console.log(err);
+        this.setState({ error: "Ocorreu um erro ao registrar sua conta. :(" })
+      }
+    }
 
 
   }
@@ -70,6 +78,7 @@ export default class Cadastro extends Component {
                     Cadastrar
                   </button>
                   <a href="/" class="btn btn-link">Login</a>
+                  {this.state.error && <p>{this.state.error}</p>}
                 </form>
               </div>
             </div>

@@ -4,6 +4,7 @@ import calendarioLogo from '../calendario_agenda.png';
 import api from '../services/api';
 
 
+
 export default class Login extends Component {
 
     constructor(props) {
@@ -11,6 +12,7 @@ export default class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            error: ''
         }
     }
 
@@ -20,16 +22,20 @@ export default class Login extends Component {
 
         const { email, password } = this.state;
 
-        if (!email.length || !password.length) return;
+        if (!email.length || !password.length) {
+            this.setState({ error: 'Preencha os campos e-mail e senha para continuar' });
+        } else {
 
-        await api.post('auth/login', { email, password }).then(res =>{
-            localStorage.setItem('token', res.data.token);
-            this.props.history.push('/home');
-        }, err => {
-            console.log(err)
-            alert('Erro ao logar')
-        });
-          
+            await api.post('auth/login', { email, password }).then(res => {
+                localStorage.setItem('token', res.data.token);
+                this.props.history.push('/home');
+            }, err => {
+                this.setState({
+                    error: "Houve um problema com o login, verifique suas credencias"
+                })
+            });
+        }
+
     }
 
     handleInputEmailChange = e => {
@@ -77,6 +83,7 @@ export default class Login extends Component {
                                         class="btn btn-primary">
                                         Entrar
                                     </button>
+                                    {this.state.error && <p>{this.state.error}</p>}
                                 </form>
                             </div>
                         </div>

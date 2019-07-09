@@ -3,6 +3,12 @@ import Calendario from './calendario';
 
 class Home extends Component {
 
+    handleLogOut = async e => {
+
+        localStorage.removeItem('token');
+        this.props.history.push('/');
+
+    }
     render() {
         return (
             <nav className="navbar navbar-light bg-light justify-content-between">
@@ -12,30 +18,23 @@ class Home extends Component {
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 <a className="btn secondary white btn-lg" href="/eventos">Cadastrar Eventos</a>
-                <a className="btn secondary white btn-lg" href="/logout">Logout</a>
+                <a onClick={this.handleLogOut} className="btn secondary white btn-lg" href="/">Logout</a>
             </nav>
         );
     }
-
-    render() {
-        return (
-            <Calendario />
-        );
-    }
-
-    onDayClick = (e, day) => {
-        alert(day);
-    }
-
-
-    render() {
-        return (
-            <div className="Home">
-                <Calendario width="400px"
-                    onDayClick={(e, day) => this.onDayClick(e, day)} />
-            </div>
-        );
-    }
+    /*  onDayClick = (e, day) => {
+         alert(day);
+     }
+ 
+ 
+     render() {
+         return (
+             <div className="Home">
+                 <Calendario width="400px"
+                     onDayClick={(e, day) => this.onDayClick(e, day)} />
+             </div>
+         );
+     } */
 
 }
 
