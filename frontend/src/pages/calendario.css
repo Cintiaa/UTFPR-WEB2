@@ -14,7 +14,7 @@ a:link{
     text-decoration: none;
 }
 table{
-    height: 500px
+    height: 350px
 }
 .calendar-container {
     border: 2px solid skyblue;
@@ -29,7 +29,7 @@ table{
 
 .calendar-header {
     border-bottom: 1px dashed skyblue;
-    font-size: 2.6em;
+    font-size: 2.4em;
 }
 
 .calendar-header td {
@@ -45,17 +45,17 @@ table{
 }
 
 .week-day {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .day {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .day {
     cursor: pointer;
     width: 45px;
-    height: 75px;
+    height: 65px;
     line-height: 24px;
 }
 
@@ -110,4 +110,8 @@ table{
 
 .label-month {
     cursor: pointer;
+}
+
+.mg{
+    margin-top: 100px;
 }

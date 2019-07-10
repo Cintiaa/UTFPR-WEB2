@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import './calendario.css';
 
-
 export default class Calendar extends React.Component {
 
     state = {
@@ -15,7 +14,7 @@ export default class Calendar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.width = props.width || "500px";
+        this.width = props.width || "350px";
         this.style = props.style || {};
         this.style.width = this.width;
     }
@@ -79,6 +78,7 @@ export default class Calendar extends React.Component {
         this.props.onMonthChange && this.props.onMonthChange();
     }
 
+ 
     SelectList = (props) => {
         let popup = props.data.map((data) => {
             return (
@@ -94,7 +94,7 @@ export default class Calendar extends React.Component {
                 {popup}
             </div>
         );
-    }
+    } 
 
     onChangeMonth = (e, month) => {
         this.setState({
@@ -107,7 +107,7 @@ export default class Calendar extends React.Component {
             <span className="label-month"
                 onClick={(e) => { this.onChangeMonth(e, this.month()) }}>
                 {this.month()}
-                {this.state.showMonthPopup &&
+               {this.state.showMonthPopup &&
                     <this.SelectList data={this.months} />
                 }
             </span>
@@ -199,6 +199,7 @@ export default class Calendar extends React.Component {
             daysInMonth.push(
                 <td key={d} className={className + selectedClass} >
                     <span onClick={(e) => { this.onDayClick(e, d) }}>{d}</span>
+                    
                 </td>
             );
         }
@@ -239,7 +240,7 @@ export default class Calendar extends React.Component {
 
                     </div>
                     <div className="col-sm-7">
-                        <div className="calendar-container">
+                        <div className="calendar-container mg">
                             <table className="calendar">
                                 <thead>
                                     <tr className="calendar-header">

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './pages/login';
 import Cadastro from './pages/cadastro';
 import Home from './pages/home';
+import Evento from './pages/evento';
 import { isAuthenticated } from './services/auth.js';
 
 
@@ -26,6 +27,7 @@ const Routes = () => (
             <Route exact path="/" component={Login} />
             <Route exact path="/cadastro" component={Cadastro} />
             <PrivateRoute path="/home" component={Home} />
+            <Route path="/evento" component={Evento} />
         </Switch>
     </BrowserRouter>
 );

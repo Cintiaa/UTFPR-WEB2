@@ -24,9 +24,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
+app.use('/home', indexRouter);
 app.use('/auth', authRouter);
-app.use('/home', eventoRouter);
+app.use('/', eventoRouter);
 
 const porta = process.env.PORT || '3000';
 app.listen(porta, () => {

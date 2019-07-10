@@ -31,7 +31,7 @@ export default class Login extends Component {
                 this.props.history.push('/home');
             }, err => {
                 this.setState({
-                    error: "Houve um problema com o login, verifique suas credencias"
+                    error: "Login e/ou senha inválidos!"
                 })
             });
         }
